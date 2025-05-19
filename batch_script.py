@@ -41,7 +41,7 @@ prop_z_list = df["prop_z"].tolist()
 
 dx = np.array(prop_x_list) - baseline_prop_x
 dy = np.array(prop_y_list) - baseline_prop_y
-dz = np.array(prop_z_list) - baseline_prop_z
+dz = np.array(prop_z_list) - baseline_prop_z 
 
 
 # ---- Loop over the number of cases ----
