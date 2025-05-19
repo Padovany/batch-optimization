@@ -48,7 +48,7 @@ dz = np.array(prop_z_list) - baseline_prop_z
 
 for i in range(len(cases)):
     # Create folder and files for case output
-    output_path = f"./output/baseline"
+    output_path = f"output/baseline"
     subprocess.run(["mkdir", "-p", output_path])
     subprocess.run(["touch", f"{output_path}/generated_disk_surface.xyz"]) 
 
