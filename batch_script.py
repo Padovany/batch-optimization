@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import argparse
 import subprocess
+import os
 
 
 # ---- Fixed inputs ----
@@ -47,7 +48,7 @@ dz = np.array(prop_z_list) - baseline_prop_z
 
 for i in range(len(cases)):
     # Generate disk surface
-    subprocess.run(["python3.9", python_script_disk, disk_surf_cgns, str(dx[i]), str(dy[i]), str(dz[i]), f"{output_folders}/{cases[i]}/generated_disk_surface.xyz"]) 
+    subprocess.run(["python3.9", python_script_disk, disk_surf_cgns, str(dx[i]), str(dy[i]), str(dz[i]), os.path.join(output_folders,cases[i],"generated_disk_surface.xyz")]) 
     print(" ---- ")
     print(f" ---- Done disk surface step for case {cases[i]}")
     print(" ---- ")
