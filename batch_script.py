@@ -52,7 +52,15 @@ for i in range(len(cases)):
     subprocess.run(["touch", "./output/test/generated_disk_surface.xyz"]) 
 
     # Generate disk surface
-    subprocess.run(["python3.9", python_script_disk, disk_surf_cgns, str(dx[i]), str(dy[i]), str(dz[i]), "./output/test/generated_disk_surface.xyz"]) 
+    subprocess.run([
+        "python3.9", 
+        python_script_disk, 
+        disk_surf_cgns, 
+        str(dx[i]), 
+        str(dy[i]), 
+        str(dz[i]), 
+        "./output/test/generated_disk_surface.xyz"
+    ]) 
     print(" ---- ")
     print(f" ---- Done disk surface step for case {cases[i]}")
     print(" ---- ")
