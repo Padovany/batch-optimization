@@ -9,7 +9,7 @@ import os
 
 csv_file = "inputs.csv"
 
-disk_surf_cgns = "../reference_geometry/disk_surface.cgns"
+disk_surf_cgns = "./reference_geometry/disk_surface.cgns"
 #prop_region_mesh = "../reference_geometry/disk.cgns"
 #wing_vol_mesh = "../tools/For_PROWIM_validation/Wing_volume_mesh/L2/wing_vol_front.cgns"
 
