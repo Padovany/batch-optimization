@@ -13,11 +13,11 @@ disk_surf_cgns = "../reference_geometry/disk_surface.cgns"
 #prop_region_mesh = "../reference_geometry/disk.cgns"
 #wing_vol_mesh = "../tools/For_PROWIM_validation/Wing_volume_mesh/L2/wing_vol_front.cgns"
 
-output_folders = "output"
+output_folders = "../output"
 #new_disk_surf = "new_disk_surf.xyz"
 #new_overset_mesh = "new_overset_mesh.cgns"
 
-python_script_disk = "../tools/generate_new_disk_surface.py"
+python_script_disk = "./tools/generate_new_disk_surface.py"
 #python_script_overset_mesh = "../tools/generate_new_overset_mesh.py"
 #python_script_ADflow = "../tools/aero_prop_wing.py"
 
@@ -48,7 +48,7 @@ dz = np.array(prop_z_list) - baseline_prop_z
 
 for i in range(len(cases)):
     # Generate disk surface
-    subprocess.run(["python3.9", python_script_disk, disk_surf_cgns, str(dx[i]), str(dy[i]), str(dz[i]), os.path.join(os.getcwd(), output_folders,cases[i],"generated_disk_surface.xyz")]) 
+    subprocess.run(["python3.9", python_script_disk, disk_surf_cgns, str(dx[i]), str(dy[i]), str(dz[i]), f"{output_folders}/{cases[i]}/generated_disk_surface.xyz"]) 
     print(" ---- ")
     print(f" ---- Done disk surface step for case {cases[i]}")
     print(" ---- ")
