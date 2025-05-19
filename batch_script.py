@@ -48,19 +48,12 @@ dz = np.array(prop_z_list) - baseline_prop_z
 
 for i in range(len(cases)):
     # Create folder and files for case output
-    subprocess.run(["mkdir", "-p", "./output/test"])
-    subprocess.run(["touch", "./output/test/generated_disk_surface.xyz"]) 
+    output_path = f"./{output_folders}/{cases[i]}"
+    subprocess.run(["mkdir", "-p", output_path])
+    subprocess.run(["touch", f"{output_path}/generated_disk_surface.xyz"]) 
 
     # Generate disk surface
-    subprocess.run([
-        "python3.9", 
-        python_script_disk, 
-        disk_surf_cgns, 
-        str(dx[i]), 
-        str(dy[i]), 
-        str(dz[i]), 
-        "./output/test/generated_disk_surface.xyz"
-    ]) 
+    subprocess.run(["python3.9", python_script_disk, disk_surf_cgns, str(dx[i]), str(dy[i]), str(dz[i]), f"{output_path}/generated_disk_surface.xyz"]) 
     print(" ---- ")
     print(f" ---- Done disk surface step for case {cases[i]}")
     print(" ---- ")
