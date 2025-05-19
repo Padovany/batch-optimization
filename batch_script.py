@@ -62,7 +62,7 @@ for i in range(len(cases)):
     #    "./output/test/generated_disk_surface.xyz"
     #]) 
     print(" ---- ")
-    print(f" ---- Done disk surface step for case {cases[i]}")
+    #print(f" ---- Done disk surface step for case {cases[i]}")
     print(" ---- ")
 
     # Generate volume mesh
