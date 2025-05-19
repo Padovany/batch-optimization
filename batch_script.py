@@ -10,15 +10,13 @@ import os
 csv_file = "inputs.csv"
 
 disk_surf_cgns = "./reference_geometry/disk_surface.cgns"
-#prop_region_mesh = "../reference_geometry/disk.cgns"
-#wing_vol_mesh = "../tools/For_PROWIM_validation/Wing_volume_mesh/L2/wing_vol_front.cgns"
+prop_region_mesh = "./reference_geometry/disk.cgns"
+wing_vol_mesh = "./reference_geometry/wing_vol_front.cgns"
 
 output_folders = "./output"
-#new_disk_surf = "new_disk_surf.xyz"
-#new_overset_mesh = "new_overset_mesh.cgns"
 
 python_script_disk = "./tools/generate_new_disk_surface.py"
-#python_script_overset_mesh = "../tools/generate_new_overset_mesh.py"
+python_script_overset_mesh = "./tools/generate_new_overset_mesh.py"
 #python_script_ADflow = "../tools/aero_prop_wing.py"
 
 baseline_prop_x = -0.2
@@ -51,6 +49,7 @@ for i in range(len(cases)):
     output_path = f"{output_folders}/{cases[i]}"
     subprocess.run(["mkdir", "-p", output_path])
     subprocess.run(["touch", f"{output_path}/generated_disk_surface.xyz"]) 
+    subprocess.run(["touch", f"{output_path}/generated_overset_mesh.cgns"]) 
 
     # Generate disk surface
     subprocess.run(["python3.9", python_script_disk, disk_surf_cgns, str(dx[i]), str(dy[i]), str(dz[i]), f"{output_path}/generated_disk_surface.xyz"]) 
@@ -59,10 +58,10 @@ for i in range(len(cases)):
     print(" ---- ")
 
     # Generate volume mesh
-    #subprocess.run(["python3.9", python_script_overset_mesh, prop_region_mesh, str(dx[i]), str(dy[i]), str(dz[i]), wing_vol_mesh, new_overset_mesh])
-    #print(" ---- ")
-    #print(" ---- Done disk overset mesh step for case " + str(i))
-    #print(" ---- ")
+    subprocess.run(["python3.9", python_script_overset_mesh, prop_region_mesh, str(dx[i]), str(dy[i]), str(dz[i]), wing_vol_mesh, f"{output_path}/generated_overset_mesh.cgns"])
+    print(" ---- ")
+    print(f" ---- Done disk surface step for case {cases[i]}")
+    print(" ---- ")
 
     # Run with ADflow
     #subprocess.run(["mpirun", "-np", "28",  "python3.9", python_script_ADflow, new_disk_surf, new_overset_mesh, "output_" + str(i), str(prop_x_list[i]), str(prop_y_list[i]), str(prop_z_list[i]), str(thrust_list[i]), str(AoA_list[i]), str(Mach_list[i]), str(swirl_factor_list[i]) ])
