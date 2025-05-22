@@ -115,6 +115,7 @@ for i in range(nCruiseCases):
 
 # Create multipoint communication object
 MP = multiPointSparse(MPI.COMM_WORLD)
+print(f"procs:{args.procs}")
 MP.addProcessorSet('cruise', nMembers=nCruiseCases, memberSizes=args.procs)
 
 # Create the communicators
