@@ -35,7 +35,7 @@ parser.add_argument('--hotStart', type=str, default=None)
 parser.add_argument('--hist', type=str, default=None)
 parser.add_argument('--histKey', type=str, default=None)
 parser.add_argument('--output', type=str, default='./out')
-parser.add_argument('--procs', type=str, default='28')
+parser.add_argument('--procs', type=int, default='28')
 # Mesh information
 parser.add_argument('--mesh', type=str, default='L2')
 # Case information
