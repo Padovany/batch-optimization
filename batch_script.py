@@ -82,7 +82,7 @@ for i in range(len(cases)):
         f"{output_path}",
         "--procs",
         args.procs
-        ])
+    ])
     print(" ---- ")
     print(f" ---- Done disk surface step for case {cases[i]}")
     print(" ---- ")
