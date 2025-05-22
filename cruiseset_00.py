@@ -29,8 +29,8 @@ shape_lower = [X_PROWIM*(-0.0144) for _ in range(runs)]
 shape_upper = [X_PROWIM*(0.0144) for _ in range(runs)]
 shape_scale = [100./X_PROWIM for _ in range(runs)]
 
-leList = [[X_PROWIM*0.01, 0, X_PROWIM*0.001], [X_PROWIM*0.01, 0, X_PROWIM*0.629] for _ in range(runs)]
-teList = [[X_PROWIM*0.239, 0, X_PROWIM*0.001], [X_PROWIM*0.239, 0, X_PROWIM*0.629] for _ in range(runs)]
+leList = [[[X_PROWIM*0.01, 0, X_PROWIM*0.001], [X_PROWIM*0.01, 0, X_PROWIM*0.629]] for _ in range(runs)]
+teList = [[[X_PROWIM*0.239, 0, X_PROWIM*0.001], [X_PROWIM*0.239, 0, X_PROWIM*0.629]] for _ in range(runs)]
 
 # Actuator zone specs
 thrust = [27.9 for _ in range(runs)]

@@ -62,12 +62,9 @@ for i in range(len(cases)):
     print(" ---- ")
 
     # Run with ADflow
-    print(f"args.procs: {args.procs} ({type(args.procs)})")
-    print(f"rotation_list[{i}]: {rotation_list[i]} ({type(rotation_list[i])})")
-
     subprocess.run([
         "mpirun",
-        "-np", str(args.procs),
+        "-np", args.procs,
         "python3.9",
         python_script_optimization,
         "--task", "clsolve_opt",
@@ -76,7 +73,7 @@ for i in range(len(cases)):
         "--ffd", "./reference_geometry/ffd_13x8.xyz",
         "--rotation", str(rotation_list[i]),
         "--output", f"{output_path}",
-        "--procs", str(args.procs)
+        "--procs", args.procs
     ])
     print(" ---- ")
     print(f" ---- Done disk surface step for case {cases[i]}")
