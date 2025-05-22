@@ -6,7 +6,6 @@ import os
 
 
 # ---- Fixed inputs ----
-
 csv_file = "inputs.csv"
 
 disk_surf_cgns = "./reference_geometry/disk_surface.cgns"
@@ -17,7 +16,7 @@ output_folders = "./output"
 
 python_script_disk = "./tools/generate_new_disk_surface.py"
 python_script_overset_mesh = "./tools/generate_new_overset_mesh.py"
-#python_script_ADflow = "../tools/aero_prop_wing.py"
+python_script_optimization = "./tools/run_optimization.py"
 
 baseline_prop_x = -0.2
 baseline_prop_y = 0.0
@@ -25,25 +24,24 @@ baseline_prop_z = 0.3
 
 
 # ---- Read input CSV ----
-
 df = pd.read_csv(csv_file)
 
 cases = df["case"].tolist()
 prop_x_list = df["prop_x"].tolist()
 prop_y_list = df["prop_y"].tolist()
 prop_z_list = df["prop_z"].tolist()
-#thrust_list = df["thrust"].tolist()
-#AoA_list = df["AoA"].tolist()
-#Mach_list = df["Mach"].tolist()
-#swirl_factor_list = df["swirl_factor"].tolist()
+rotation_list = df["rotation"].tolist()
 
 dx = np.array(prop_x_list) - baseline_prop_x
 dy = np.array(prop_y_list) - baseline_prop_y
-dz = np.array(prop_z_list) - baseline_prop_z 
+dz = np.array(prop_z_list) - baseline_prop_z
 
+# ---- Processing setup ----
+parser = argparse.ArgumentParser()
+parser.add_argument('--procs', type=str, default='28')
+args = parser.parse_args()
 
 # ---- Loop over the number of cases ----
-
 for i in range(len(cases)):
     # Create folder and files for case output
     output_path = f"{output_folders}/{cases[i]}"
@@ -64,8 +62,28 @@ for i in range(len(cases)):
     print(" ---- ")
 
     # Run with ADflow
-    #subprocess.run(["mpirun", "-np", "28",  "python3.9", python_script_ADflow, new_disk_surf, new_overset_mesh, "output_" + str(i), str(prop_x_list[i]), str(prop_y_list[i]), str(prop_z_list[i]), str(thrust_list[i]), str(AoA_list[i]), str(Mach_list[i]), str(swirl_factor_list[i]) ])
-    #print(" ---- ")
-    #print(" ---- Done disk ADflow step for case " + str(i))
-    #print(" ---- ")
+    subprocess.run([
+        "mpirun", 
+        "-np", 
+        args.procs,  
+        "python3.9", 
+        python_script_optimization, 
+        "--task", 
+        "clsolve_opt", 
+        "--mesh",
+        f"{output_path}/generated_overset_mesh.cgns",
+        "--disksurf",
+        f"{output_path}/generated_disk_surface.xyz",
+        "--ffd",
+        "./reference_geometry/ffd_13x8.xyz",
+        "--rotation",
+        rotation_list[i],
+        "--output",
+        f"{output_path}",
+        "--procs",
+        args.procs
+        ])
+    print(" ---- ")
+    print(f" ---- Done disk surface step for case {cases[i]}")
+    print(" ---- ")
 
