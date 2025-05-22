@@ -62,7 +62,27 @@ for i in range(len(cases)):
     print(" ---- ")
 
     # Run with ADflow
-    subprocess.run(["mpirun", "-np", args.procs,  "python3.9", python_script_optimization, "--task", "clsolve_opt","--mesh",f"{output_path}/generated_overset_mesh.cgns","--disksurf",f"{output_path}/generated_disk_surface.xyz","--ffd","./reference_geometry/ffd_13x8.xyz","--rotation",rotation_list[i],"--output",f"{output_path}","--procs",args.procs])
+    subprocess.run([
+        "mpirun",
+        "-np",
+        str(args.procs),
+        "python3.9",
+        python_script_optimization,
+        "--task",
+        "clsolve_opt",
+        "--mesh",
+        f"{output_path}/generated_overset_mesh.cgns",
+        "--disksurf",
+        f"{output_path}/generated_disk_surface.xyz",
+        "--ffd",
+        "./reference_geometry/ffd_13x8.xyz",
+        "--rotation",
+        rotation_list[i],
+        "--output",
+        f"{output_path}",
+        "--procs",
+        str(args.procs)
+    ])
     print(" ---- ")
     print(f" ---- Done disk surface step for case {cases[i]}")
     print(" ---- ")
