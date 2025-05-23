@@ -92,10 +92,6 @@ nCruiseCases = len(cruiseSet.mach)
 cruiseProblems = []
 for i in range(nCruiseCases):
     evalFuncs = ['cd', 'cl']
-    # if cruiseSet.cmx[i]:
-    #     evalFuncs.append('cmx')
-    # if cruiseSet.buffet[i]:
-    #     print('Need to set up upper surface family on wing.')
     ap = AeroProblem(
         name='cruise%d'%i, 
         mach=cruiseSet.mach[i], 
