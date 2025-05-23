@@ -8,7 +8,7 @@ import numpy
 
 # scaling factor
 X_PROWIM = 1. #10.
-runs = 3
+runs = 2
 
 # Flow conditions
 mach =      [0.3 for _ in range(runs)]
