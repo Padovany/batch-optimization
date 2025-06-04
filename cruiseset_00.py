@@ -33,7 +33,7 @@ leList = [[[X_PROWIM*0.01, 0, X_PROWIM*0.001], [X_PROWIM*0.01, 0, X_PROWIM*0.629
 teList = [[[X_PROWIM*0.239, 0, X_PROWIM*0.001], [X_PROWIM*0.239, 0, X_PROWIM*0.629]] for _ in range(runs)]
 
 # Actuator zone specs
-thrust = [0, 0]#[27.9 for _ in range(runs)]
+thrust = [27.9 for _ in range(runs)]
 ##swirlFact = [-1.0,1.0] ### 1 is outboard-up looking along the x-axis; -1 is inboard-up
 distribPDfactor = [2*0.85 for _ in range(runs)]
 
