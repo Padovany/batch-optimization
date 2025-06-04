@@ -191,6 +191,9 @@ aeroOptions = {
 # Create solver
 CFDSolver = ADFLOW(options=aeroOptions, comm=comm)
 
+# Debugging
+print("Families in mesh:", CFDSolver.getFamilyNames())
+
 # Save the total lift distribution
 CFDSolver.addLiftDistribution(400, 'z')
 
@@ -215,6 +218,9 @@ if cruiseSet.thrust[0] != 0.:
         rootDragFactor=cruiseSet.rootDragFactor[0])
 
     CFDSolver.writeActuatorRegions('write_act_reg')
+
+    print("Actuator volume:", CFDSolver.getActuatorVolume(0))
+    print("Actuator area:", CFDSolver.getActuatorArea(0))
 else:
     print("PROP IS OFF")
 
