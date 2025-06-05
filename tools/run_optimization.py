@@ -216,8 +216,8 @@ if cruiseSet.thrust[0] != 0.:
 
     CFDSolver.writeActuatorRegions('write_act_reg')
 
-    print("Actuator volume:", CFDSolver.getActuatorVolume(0))
-    print("Actuator area:", CFDSolver.getActuatorArea(0))
+    print(CFDSolver.getOptionNames())
+    print(CFDSolver.getOption('actuatorRegionNames'))
 else:
     print("PROP IS OFF")
 
