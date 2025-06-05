@@ -191,9 +191,6 @@ aeroOptions = {
 # Create solver
 CFDSolver = ADFLOW(options=aeroOptions, comm=comm)
 
-# Debugging
-print("Families in mesh:", CFDSolver.getFamilyNames())
-
 # Save the total lift distribution
 CFDSolver.addLiftDistribution(400, 'z')
 
