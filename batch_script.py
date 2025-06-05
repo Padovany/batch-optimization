@@ -74,9 +74,9 @@ for i in range(len(cases)):
         "--rotation", str(rotation_list[i]),
         "--output", f"{output_path}",
         "--procs", args.procs,
-        "--prop_x", prop_x_list[i],
-        "--prop_y", prop_y_list[i],
-        "--prop_z", prop_z_list[i]
+        "--prop_x", str(prop_x_list[i]),
+        "--prop_y", str(prop_y_list[i]),
+        "--prop_z", str(prop_z_list[i])
     ])
     print(" ---- ")
     print(f" ---- Done disk surface step for case {cases[i]}")
