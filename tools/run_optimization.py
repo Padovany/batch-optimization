@@ -41,6 +41,9 @@ parser.add_argument('--mesh', type=str, default='L2')
 # Case information
 parser.add_argument('--cruiseset', type=str, default='cruiseset_00.py')
 parser.add_argument('--rotation', type=str, default='1')
+parser.add_argument('--prop_x', type=int, default=-0.2)
+parser.add_argument('--prop_y', type=int, default=0.0)
+parser.add_argument('--prop_z', type=int, default=0.3)
 # Geometric information
 parser.add_argument('--ffd', type=str, default='10x10')
 parser.add_argument('--disksurf', type=str, default='disk_surf')
@@ -201,8 +204,8 @@ if cruiseSet.thrust[0] != 0.:
     CFDSolver.addActuatorRegion(
         args.disksurf, 
         'simpleProp', 
-        cruiseSet.axisPt1[0], 
-        cruiseSet.axisPt2[0], 
+        numpy.array([args.prop_x-0.0518,args.prop_y,args.prop_z]), #axisPt1
+        numpy.array([args.prop_x-0.0018,args.prop_y,args.prop_z]), #axisPt2
         'disk', 
         thrust=cruiseSet.thrust[0], 
         swirlFact=args.rotation, 

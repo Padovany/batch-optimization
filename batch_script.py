@@ -73,7 +73,10 @@ for i in range(len(cases)):
         "--ffd", "./reference_geometry/ffd_13x8.xyz",
         "--rotation", str(rotation_list[i]),
         "--output", f"{output_path}",
-        "--procs", args.procs
+        "--procs", args.procs,
+        "--prop_x", prop_x_list[i],
+        "--prop_y", prop_y_list[i],
+        "--prop_z", prop_z_list[i]
     ])
     print(" ---- ")
     print(f" ---- Done disk surface step for case {cases[i]}")
