@@ -7,7 +7,7 @@ Prop on
 import numpy
 
 # scaling factor
-X_PROWIM = 1. #10.
+X_PROWIM = 10. #10.
 runs = 2
 
 # Flow conditions
