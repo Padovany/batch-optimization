@@ -7,7 +7,7 @@ Prop on
 import numpy
 
 # scaling factor
-X_PROWIM = 10. #10.
+X_PROWIM = 1. #10.
 runs = 2
 
 # Flow conditions
@@ -37,8 +37,8 @@ thrust = [27.9 for _ in range(runs)]
 ##swirlFact = [-1.0,1.0] ### 1 is outboard-up looking along the x-axis; -1 is inboard-up
 distribPDfactor = [2*0.85 for _ in range(runs)]
 
-axisPt1 = [X_PROWIM*numpy.array([-.2518,0.,0.64]) for _ in range(runs)]
-axisPt2 = [X_PROWIM*numpy.array([-.2018,0.,0.64]) for _ in range(runs)]
+axisPt1 = [X_PROWIM*numpy.array([-.2518,0.,0.3]) for _ in range(runs)]
+axisPt2 = [X_PROWIM*numpy.array([-.2018,0.,0.3]) for _ in range(runs)]
 mDistribParam = [1. for _ in range(runs)]
 nDistribParam = [0.2 for _ in range(runs)] 
 innerZeroThrustRadius = [X_PROWIM*0.041 for _ in range(runs)]

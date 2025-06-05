@@ -215,9 +215,6 @@ if cruiseSet.thrust[0] != 0.:
         rootDragFactor=cruiseSet.rootDragFactor[0])
 
     CFDSolver.writeActuatorRegions('write_act_reg')
-
-    print(CFDSolver.getOptionNames())
-    print(CFDSolver.getOption('actuatorRegionNames'))
 else:
     print("PROP IS OFF")
 
