@@ -62,7 +62,7 @@ for i in range(len(cases)):
     print(" ---- ")
 
     # Run with ADflow
-    subprocess.run([
+    """ subprocess.run([
         "mpirun",
         "-np", args.procs,
         "python3.9",
@@ -81,4 +81,4 @@ for i in range(len(cases)):
     print(" ---- ")
     print(f" ---- Done disk surface step for case {cases[i]}")
     print(" ---- ")
-
+ """
